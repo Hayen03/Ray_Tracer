@@ -45,7 +45,7 @@ public class SIllumination {
 	 */
 	public static SColor ambientReflexion(SColor La, SColor Sa)
 	{
-		return NO_ILLUMINATION;
+		return La.multiply(Sa);
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class SIllumination {
 	 */
 	public static SColor lambertianReflexion(SColor Ld, SColor Sd, SVector3d N, SVector3d d)
 	{
-	  return NO_ILLUMINATION;
+	  return Ld.multiply(Sd.multiply(N.dot(d.multiply(-1)))).normalize();
 	}
 	
 	/**

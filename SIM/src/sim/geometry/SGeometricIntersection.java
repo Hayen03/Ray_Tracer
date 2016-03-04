@@ -4,6 +4,7 @@
 package sim.geometry;
 
 import sim.exception.SNoImplementationException;
+import sim.math.SMath;
 import sim.math.SVector3d;
 
 /**
@@ -31,7 +32,15 @@ public class SGeometricIntersection {
    */
   public static double[] planeIntersection(SRay ray, SVector3d r_plane, SVector3d n_plane)
   {
-    return new double[0];
+	  double v_dot_n = ray.getDirection().dot(n_plane);
+	  if(Math.abs(v_dot_n) < SMath.EPSILON)
+		  return new double[0];
+	  else {
+		  // Calcul à effectuer pour l'intersection du rayon avec le plan : t = n . (rP - r0) / v . n
+		  double t = n_plane.dot(r_plane.substract(ray.getOrigin())) / v_dot_n;
+		  double[ ] solution = { t };
+		  return solution;
+	  } 
   }
   
   /**
