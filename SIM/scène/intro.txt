@@ -33,7 +33,7 @@ material_name	disque_xy_z=0
 disk
 position	0.0	0.0	0.0
 normal		0.0	0.0	1.0
-ray			3.0
+ray			4.0
 end
 end
 

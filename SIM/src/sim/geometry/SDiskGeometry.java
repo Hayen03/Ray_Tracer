@@ -136,15 +136,14 @@ public class SDiskGeometry extends SPlaneGeometry {
   @Override
   public SRay intersection(SRay ray) throws SRuntimeException
   {
-    //Faire l'intersection avec le plan du disque par l'héritage de l'intersection avec un plan
-    SRay ray_plane_intersection = super.intersection(ray);
-    
-    if(!ray_plane_intersection.asIntersected())
-      return ray;
-    else
-    {
-      return ray_plane_intersection;
-    }
+	//Faire l'intersection avec le plan du disque par l'héritage de l'intersection avec un plan
+	    SRay ray_plane_intersection = super.intersection(ray);
+	    if (!ray_plane_intersection.asIntersected())
+	    	return ray;
+	    SVector3d difference = ray_plane_intersection.getIntersectionPosition().substract(this.position);
+	    if (R*R >= difference.dot(difference))
+	    	return ray_plane_intersection;
+	    return ray;
   }
 
   @Override

@@ -144,13 +144,15 @@ public final class SMath {
    */
 	public static double[] quadricRealRoot(double A, double B, double C)
 	{
-	  // Vérifier si le polynôme n'est pas d'un degré inférieur
-	  if(A == 0.0)
-	    return linearRealRoot(B,C);
-	  else
-	  {
-	    throw new SNoImplementationException("Erreur SMath : C'est méthode n'a pas été implémentée.");
-	  }
+	  double r = B*B-4*A*C;
+	  if (r < 0)
+		  return new double[0];
+	  if (r == 0)
+		  return new double[]{-B/2/A};
+	  r = Math.sqrt(r);
+	  double a = (-B-r)/2/A;
+	  double b = (-B+r)/2/A;
+	  return (a < b ? new double[]{a, b} : new double[]{b, a});
 	  
 	}
 	
