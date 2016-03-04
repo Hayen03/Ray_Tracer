@@ -1,0 +1,118 @@
+camera
+position			[0.0, 4.0, 7.0]
+look_at			[0.0, 1.0, 0.0]
+up				[0.0, 1.0, 0.0]
+angle				60.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	100.0
+end
+
+viewport
+width				500 pixels
+height			500 pixels
+image_file_name		mickey_mouse
+end
+
+Raytracer
+task				1
+sampling			1
+recursive_level		2
+specular_reflexion	BLINN
+pixel_coordinate	center
+space				voxel
+end
+
+
+model
+file				mickey_mouse.obj
+translation		0.0		0.0		0.0
+rotation			0.0		0.0			0.0
+scale				1.0		1.0			1.0
+uv_format			origin_uv_bottom_left
+end
+
+model
+file				mickey_mouse.obj
+translation		-2.0		0.0		0.0
+rotation			0.0		30.0		0.0
+scale				1.0		1.0			1.0
+uv_format			origin_uv_top_left
+end
+
+model
+file				mickey_mouse.obj
+translation		2.0		0.0		0.0
+rotation			0.0		60.0		0.0
+scale				1.0		1.0			1.0
+uv_format			origin_uv_bottom_left
+end
+
+model
+file				mickey_mouse.obj
+translation		-3.0		0.0		-10.0
+rotation			0.0		0.0			0.0
+scale				1.5		2.0			1.5
+uv_format			origin_uv_bottom_left
+end
+
+model
+file				mickey_mouse.obj
+translation		3.0			5.0		-10.0
+rotation			180.0		0.0		0.0
+scale				0.5			0.5		0.5
+uv_format			origin_uv_bottom_left
+end
+
+model
+file				mickey_mouse.obj
+translation		3.0			2.0		-10.0
+rotation			0.0			0.0		-90.0
+scale				0.8			0.8		0.8
+uv_format			origin_uv_bottom_left
+end
+
+primitive
+material_name		plancher
+plane
+position			0.0	0.0	0.0
+normale			0.0	1.0	0.0
+end
+end
+
+material
+name			plancher
+color			1.0	1.0	1.0
+ka				0.1
+kd				0.2
+ks				0.7
+kr				0.3
+shininess		100
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_ambiante
+color 	0.2	0.2	0.2
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+
+lumiere_ponctuelle
+color			1.0	1.0	1.0
+position   	0.0	2.0	2.0
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+
+lumiere_directionnelle
+color				1.0		1.0		1.0
+orientation   		0.0		-1.0		-1.0
+end
+
+
+

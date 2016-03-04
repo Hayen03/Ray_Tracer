@@ -1,0 +1,55 @@
+#Modèle d'une flèche parallèle à l'axe z
+
+primitive
+material_name	corps
+cylinder
+point		0.0	0.0	0.0
+point		0.0	0.0	1.0
+rayon		0.1
+end
+end
+
+primitive
+material_name	tete
+cone
+point		0.0	0.0	1.0
+point		0.0	0.0	1.3
+rayon		0.2
+end
+end
+
+primitive
+material_name	pied
+cylinder
+point		0.0	0.0	-0.075
+point		0.0	0.0	0.075
+rayon		0.2
+end
+end
+
+color_material
+name	corps
+color	0.8	0.8	0.8
+ka	0.6
+kd	0.8
+ks	0.4
+kr	0.0
+end	#end material
+
+color_material
+name	tete
+color	0.8	0.8	0.8
+ka	0.4
+kd	0.7
+ks	0.4
+kr	0.0
+end	#end material
+
+color_material
+name	pied
+color	0.8	0.8	0.8
+ka	0.4
+kd	0.7
+ks	0.4
+kr	0.0
+end	#end material

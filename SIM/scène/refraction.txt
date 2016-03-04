@@ -1,0 +1,193 @@
+camera
+position			[-5.0, 0.0, 2.0]
+look_at				[0.0, 0.0, 0.0]
+up					[0.0, 0.0, 0.1]
+angle				65.0 degrees
+near_clipping_plane	1
+far_clipping_plane	100.0
+end
+
+viewport
+width			500 pixels
+height			500 pixels
+image_file_name	refraction
+end
+
+raytracer
+task				1
+sampling			1
+recursive_level		5
+specular_reflexion	BLINN
+pixel_coordinate	top_left
+space				linear
+color_normalization	clamp_channel
+end
+
+#----------------------
+#PRIMITIVE ET MATERIEL
+#----------------------
+
+###################
+#LE PLAN
+###################
+primitive
+material_name	plan_xy
+plane
+position	0.0	0.0	-2.0
+normal		0.0	0.0	1.0
+end
+end
+
+material
+name	plan_xy
+color	0.8	0.8	0.6
+ka	0.1
+kd	0.4
+ks	0.2
+end	#end material
+
+#################################################################
+#SPHERES EN x=0 
+#################################################################
+primitive
+material_name	sphere_x=0_z=1_transparent
+sphere
+position	0.0	2.0	1.0
+ray		1.0
+end
+end
+
+material
+name	sphere_x=0_z=1_transparent
+color	1.0 	1.0	1.0
+ka	0.05
+kd	0.05
+ks	0.2
+kt	0.95
+n	1.55
+end	#end material
+
+primitive
+material_name	sphere_x=0_z=1_opaque
+sphere
+position	0.0	-2.0	1.0
+ray		1.0
+end
+end
+
+material
+name	sphere_x=0_z=1_opaque
+color	1.0 	1.0	1.0
+ka	0.2
+kd	0.4
+p	0.5
+ks	0.6
+kr	0.4
+end	#end material
+
+
+#################################################################
+#SPHERES EN x=2 (On utilise 2 matériel pour les sphères)
+#################################################################
+primitive
+material_name	sphere_x=2_bleu
+sphere
+position	2.0	3.0	1.0
+ray		0.5
+end
+end
+
+primitive
+material_name	sphere_x=2_vert
+sphere
+position	2.0	1.0	1.0
+ray		0.5
+end
+end
+
+primitive
+material_name	sphere_x=2_vert
+sphere
+position	2.0	-1.0	1.0
+ray		0.5
+end
+end
+
+primitive
+material_name	sphere_x=2_bleu
+sphere
+position	2.0	-3.0	1.0
+ray		0.5
+end
+end
+
+material
+name	sphere_x=2_vert
+color	0.2 	0.9	0.1
+ka	0.3
+kd	0.6
+p	1.0
+ks	0.7
+end	#end material
+
+material
+name	sphere_x=2_bleu
+color	0.2 	0.1	0.9
+ka	0.3
+kd	0.6
+p	1.0
+ks	0.7
+end	#end material
+
+#################################################################
+#SPHERES EN x=4 (On utilise le même matériel pour les sphères)
+#################################################################
+primitive
+material_name	sphere_x=4
+sphere
+position	2.0	4.0	1.0
+ray		1
+end
+end
+
+primitive
+material_name	sphere_x=4
+sphere
+position	2.0	-4.0	1.0
+ray		1
+end
+end
+
+
+material
+name	sphere_x=4
+color	0.9 	0.2	0.3
+ka	0.3
+kd	0.6
+p	0.0
+ks	0.4
+end	#end material
+
+#-------
+#Lumière
+#-------
+
+lumiere_ambiante
+color 	1.0	1.0	1.0
+end
+
+
+#Lumière au-dessus de l'origine
+lumiere_ponctuelle
+color 	1.0	1.0	1.0
+position 0.0	0.0	5.0
+quadratic_attenuator	0.02
+end
+
+
+lumiere_directionnelle
+color	0.7	0.7	0.7
+orientation   1.0	1.0	-1.0
+end
+
+

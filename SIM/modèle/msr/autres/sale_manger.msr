@@ -1,0 +1,24 @@
+model
+file	table_ronde.msr
+scale	2.0	2.0	3.0
+end
+
+model
+file	tabouret.msr
+scale	1.0	1.0	4.0
+translation	0.0	4.5	0.0
+end
+
+model
+file	tabouret.msr
+scale	1.0	1.0	4.0
+translation	0.0	-4.5	0.0
+end
+
+model
+file	tabouret.msr
+scale	1.0	1.0	4.0
+translation	4.5	0.0	0.0
+rotation 	0.0	60.0	0.0
+end
+

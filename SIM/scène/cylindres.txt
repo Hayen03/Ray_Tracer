@@ -1,0 +1,199 @@
+camera
+position			[-5, 0.0, 2.0]
+look_at				[0.0, 0.0, 0.0]
+up					[0.0, 0.0, 0.1]
+angle				65.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	100.0
+end
+
+viewport
+width				500 pixels
+height				500 pixels
+image_file_name		tubes
+end
+
+raytracer
+task				1
+sampling			1
+recursive_level		3
+specular_reflexion	blinn
+pixel_coordinate	top_left
+space				linear
+color_normalization	clamp_channel
+end
+
+#----------------------
+#PRIMITIVE ET MATERIEL
+#----------------------
+
+###################
+#LE PLAN
+###################
+primitive
+material_name	plan_xy_z=0
+plane
+position	0.0	0.0	0.0
+normal		0.0	0.0	1.0
+end
+end
+
+material
+name	plan_xy_z=0
+color	0.8	0.8	0.6
+ka	0.1
+kd	0.4
+ks	0.2
+kr	0.2
+end	#end material
+
+#################################################################
+#SPHÈRE À L'ORIGINE et SPHÈRES CACHÉES
+#################################################################
+primitive
+material_name	sphere
+sphere
+position	0.0		0.0		0.0
+ray		0.2
+end
+end
+
+primitive
+material_name	sphere
+sphere
+position	0.0		2.0		0.0
+ray		0.2
+end
+end
+
+primitive
+material_name	sphere
+sphere
+position	2.0		2.0		0.0
+ray		0.2
+end
+end
+
+material
+name	sphere
+color	1.0 	1.0		1.0
+ka	0.2
+kd	0.7
+p	0.0
+ks	0.7
+kr	0.8
+end	#end material_name
+
+#################################################################
+#TUBE VERT
+#################################################################
+primitive
+material_name	tube_vert
+cylinder
+point	0.0		2.0		0.0
+point	0.0		2.0		1.0
+ray		1.0
+end
+end
+
+material
+name	tube_vert
+color	0.4 	1.0		0.4
+ka	0.05
+kd	0.05
+p	1.0
+ks	0.5
+kr	0.1
+kt	0.95
+end	#end material
+
+#################################################################
+#TUBE BLEU
+#################################################################
+primitive
+material_name	tube_bleu
+cylinder
+point	2.0		3.0		3.0
+point	4.0		3.0		3.0
+ray		0.6
+end
+end
+
+material
+name	tube_bleu
+color	0.1 	0.1		1.0
+ka	0.2
+kd	0.4
+p	1.0
+ks	0.9
+kr	0.2
+end	#end material
+
+#################################################################
+#TUBE ROUGE
+#################################################################
+primitive
+material_name	tube_rouge
+cylinder
+point	-1.0	-1.0	2.0
+point	2.0		-4.0	3.0
+ray		0.6
+end
+end
+
+material
+name	tube_rouge
+color	1.0 	0.1		0.1
+ka	0.2
+kd	0.4
+p	0.0
+ks	0.9
+kr	0.3
+end	#end material
+
+#################################################################
+#TUBE JAUNE 
+#################################################################
+primitive
+material_name	tube_jaune
+cylinder
+point	1.0		0.0		2.0
+point	4.0		0.0		0.0
+ray		0.3
+end
+end
+
+material
+name	tube_jaune
+color	1.0 	1.0		0.1
+ka	0.2
+kd	0.4
+p	0.0
+ks	0.9
+kr	0.3
+end	#end material
+
+#-------
+#Lumière
+#-------
+
+lumiere_ambiante
+color 	1.0	1.0	1.0
+end
+
+
+#Lumière au-dessus de l'origine
+lumiere_ponctuelle
+color 	1.0	1.0	1.0
+position 0.0	0.0	5.0
+quadratic_attenuator	0.2
+end
+
+
+
+lumiere_directionnelle
+color			0.7	0.7	0.7
+orientation   	1.0	1.0	-1.0
+end
+
+

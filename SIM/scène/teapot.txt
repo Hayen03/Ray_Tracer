@@ -1,0 +1,54 @@
+camera
+position		[5.0, 5.0, 0.0]
+look_at		[0.0, 0.0, 0.0]
+up			[0.0, 0.1, 0.0]
+angle			60.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	100.0
+end
+
+viewport
+width			500 pixels
+height		500 pixels
+image_file_name	teapot
+end
+
+raytracer
+task				1
+sampling			1
+recursive_level		1
+specular_reflexion	BLINN
+pixel_coordinate	top_left
+space				linear
+end
+
+model	
+file	teapot.obj
+end
+
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_ambiante
+color 	1.0	1.0	1.0
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_ponctuelle
+color 	1.0	1.0	1.0
+position 0.0	5.0	0.0
+quadratic_attenuator	0.05
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_directionnelle
+color		1.0	1.0	1.0
+orientation   	-1.0	-1.0	-1.0
+end
+
+

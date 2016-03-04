@@ -1,0 +1,178 @@
+
+#CAMERA POUR LA VISUALISATION DE LA SCÈNE version 1
+camera
+position			[-10, -8.0, 4.0]
+look_at				[0.0, 0.0, 0.0]
+up					[0.0, 0.0, 0.1]
+angle				65.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	100.0
+end
+
+#CAMERA POUR LA VISUALISATION DE LA SCÈNE version 2
+/*
+camera
+position			[32, 30.0, 8.0]
+look_at				[0.0, 0.0, 0.0]
+up					[0.0, 0.0, 0.1]
+angle				65.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	100.0
+end
+*/
+
+viewport
+width				500 pixels
+height				500 pixels
+image_file_name		modele_msr
+end
+
+raytracer
+task				1
+sampling			1
+recursive_level		6
+specular_reflexion	blinn
+pixel_coordinate		top_left
+space				linear
+color_normalization	clamp_channel
+end
+
+#----------------------
+#PRIMITIVE ET MATERIEL
+#----------------------
+
+###################
+#LE PLAN
+###################
+primitive
+material_name	plan_xy_z=0
+plane
+position	0.0	0.0	0.0
+normal		0.0	0.0	1.0
+end
+end
+
+material
+name	plan_xy_z=0
+color	0.8	0.8	0.8
+ka	0.1
+kd	0.4
+ks	0.2
+kr	0.15
+end	#end material
+
+#################################################################
+#MODÈLES
+#################################################################
+
+model
+file	pyramide-9-4-1.msr
+end
+
+model
+file	pyramide-9-4-1.msr
+scale			2.0		2.0		3.0
+translation		20.0	0.0		0.0
+end
+
+model
+file			tour_de_bloc.msr
+translation		0.0		5.0		0.0
+end
+
+model
+file			tour_de_bloc.msr
+translation		0.0		-5.0		0.0
+end
+
+model
+file			tour_de_bloc.msr
+translation		-5.0		0.0		0.0
+end
+
+model
+file			tour_de_bloc.msr
+translation		5.0		0.0		0.0
+end
+
+################################################################################################################################
+# TEST pour vérifier si l'implémentation de la méthode 
+- public boolean isInside(SVector3d v) - 
+a été adaptée par les matrices de transformation
+################################################################################################################################
+
+#La cube englobant
+
+primitive
+material_name	cube
+geometry
+scale			4.0		4.0		8.0
+translation		20.0	20.0	0.0	
+cube
+position	0.0		0.0		0.5
+size		1.0
+end
+end
+end
+
+material
+name	cube
+color	1.0		1.0		1.0
+ka	0.02
+kd	0.05
+ks	0.1
+kr	0.0
+kt  0.9
+n	1.4
+end	#end material
+
+#La sphère intérieur
+
+primitive
+material_name	sphere
+geometry
+scale			1.0		1.0		2.0
+translation		20.0	20.0	4.0	
+sphere
+position	0.0		0.0		0.0
+ray		1.0
+end
+end
+end
+
+material
+name	sphere
+color	1.0		1.0		0.0
+ka	0.2
+kd	0.3
+ks	0.7
+kr	0.0
+kt  0.7
+n	2.0
+end	#end material
+
+
+#-------
+#Lumière
+#-------
+
+lumiere_ambiante
+color 	1.0	1.0	1.0
+end
+
+
+#Lumière au-dessus de l'origine
+lumiere_ponctuelle
+color 	1.0	1.0	1.0
+position 0.0	0.0	5.0
+quadratic_attenuator	0.2
+end
+
+
+
+lumiere_directionnelle
+color			0.7	0.7	0.7
+orientation   	1.0	1.0	-1.0
+end
+
+

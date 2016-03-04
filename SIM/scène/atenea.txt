@@ -1,0 +1,54 @@
+camera
+position			[3000.0, 1000.0, 3000.0]
+look_at			[0.0, 1050.0, 0.0]
+up				[0.0, 1.0, 0.0]
+angle				60.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	10000.0
+end
+
+viewport
+width				500 pixels
+height			500 pixels
+image_file_name		atenea
+end
+
+raytracer
+task				1
+sampling			1
+recursive_level		1
+specular_reflexion	blinn
+pixel_coordinate	top_left
+space				linear
+color_normalization	clamp_channel
+end
+
+
+model	
+file		atenea.obj
+end
+
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_ambiante
+color 	1.0	1.0	1.0
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_ponctuelle
+color 	1.0	1.0	1.0
+position 1000.0	1000.0	1000.0
+quadratic_attenuator	0.0
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_directionnelle
+color			0.4	0.4	0.4
+orientation   1.0	1.0	-1.0
+end

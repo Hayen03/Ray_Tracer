@@ -1,0 +1,129 @@
+camera
+position		[15.0, 15.0, 10.0]
+look_at		[0.0, 0.0, 0.0]
+up			[0.0, 0.0, 0.1]
+angle			60.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	100.0
+end
+
+viewport
+width			500 pixels
+height		500 pixels
+image_file_name	modele_agp
+end
+
+Raytracer
+task				1
+sampling			1
+recursive_level		2
+specular_reflexion	BLINN
+pixel_coordinate		top_left
+end
+
+# MODÈLE 3D À INTRODUIRE (trois copies)
+
+/*
+model
+file			NOM_DU_FICHIER.agp
+scale			1.0	1.0	1.0
+translation	0.0	0.0	0.0
+rotation		0.0	0.0	0.0
+end
+*/
+
+# PS : AJOUTEZ DES SOURCES DE LUMIÈRE AU BESOIN !
+
+
+##################
+#SYSTÈME D'AXE
+##################
+primitive
+material_name	origine
+sphere
+position	0.0	0.0	0.0
+rayon		0.5
+end
+end
+
+
+primitive
+material_name	cylindre_x
+cylinder
+point		0.0	0.0	0.0
+point		10.0	0.0	0.0
+ray		0.3
+end
+end
+
+primitive
+material_name	cylindre_y
+cylinder
+point		0.0	0.0	0.0
+point		0.0	10.0	0.0
+ray		0.3
+end
+end
+
+primitive
+material_name	cylindre_z
+cylinder
+point		0.0	0.0	0.0
+point		0.0	0.0	10.0
+ray		0.3
+end
+end
+
+---------------------------------------------
+
+color_material
+name	origine
+color	1.0	1.0	1.0
+ka	0.3
+kd	0.5
+ks	0.4
+kr	0.0
+end	#end material
+
+color_material
+name	cylindre_x
+color	0.8	0.0	0.0
+ka	0.3
+kd	0.5
+ks	0.4
+kr	0.0
+end	#end material
+
+color_material
+name	cylindre_y
+color	0.0	0.8	0.0
+ka	0.3
+kd	0.5
+ks	0.4
+kr	0.0
+end	#end material
+
+color_material
+name	cylindre_z
+color	0.0	0.0	0.8
+ka	0.3
+kd	0.5
+ks	0.4
+kr	0.0
+end	#end material
+
+*****************************
+**	Lumière blanche		**
+*****************************
+lumiere_ambiante
+color 	1.0	1.0	1.0
+end
+
+
+*****************************
+**	Lumière blanche		**
+*****************************
+lumiere_directionnelle
+color			1.0	1.0	0.0
+orientation   -1.0	-1.0	-1.0
+end

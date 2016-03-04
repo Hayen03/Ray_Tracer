@@ -1,0 +1,62 @@
+primitive
+material_name	patte
+cylinder
+point		1.0	0.0	0.0
+point		1.0	0.0	1.0
+rayon		0.2
+end
+end
+
+primitive
+material_name	patte
+cylinder
+point		-1.0	0.0	0.0
+point		-1.0	0.0	1.0
+rayon		0.2
+end
+end
+
+primitive
+material_name	patte
+cylinder
+point		0.0	1.0	0.0
+point		0.0	1.0	1.0
+rayon		0.2
+end
+end
+
+primitive
+material_name	patte
+cylinder
+point		0.0	-1.0	0.0
+point		0.0	-1.0	1.0
+rayon		0.2
+end
+end
+
+primitive
+material_name	surface
+cylinder
+point		0.0	0.0	0.95
+point		0.0	0.0	1.05	
+rayon		1.5
+end
+end
+
+color_material
+name	patte
+color	0.0	0.0	1.0
+ka	0.4
+kd	0.3
+ks	0.4
+kr	0.0
+end	#end material
+
+color_material
+name	surface
+color	0.8	0.7	0.0
+ka	0.4
+kd	0.3
+ks	0.4
+kr	0.0
+end	#end material

@@ -1,0 +1,146 @@
+#Tour de bloc de 6 cube de haut verticale selon l'axe z avec une sphère qui se retrouve au sommet.
+#Les cubes sont tournés de 40 degré selon l'axe z en séquence.
+#La base de la tour est en z = 0.
+
+#Auteur : Simon Vézina (2015-12-03)
+
+
+#CUBE 1
+
+primitive
+material_name	cube1
+
+geometry
+scale		1.0	1.0	1.0
+rotation	0.0	0.0	0.0
+translation	0.0	0.0	0.0
+
+cube
+position	0.0	0.0	0.5
+size		0.999
+end
+end
+end
+
+#CUBE 2
+
+primitive
+material_name	cube2
+
+geometry
+scale		1.0	1.0	1.0
+rotation	0.0	0.0	40.0
+translation	0.0	0.0	0.0
+
+cube
+position	0.0	0.0	1.5
+size		0.999
+end
+end
+end
+
+#CUBE 3
+
+primitive
+material_name	cube3
+
+geometry
+scale		1.0	1.0	1.0
+rotation	0.0	0.0	80.0
+translation	0.0	0.0	0.0
+
+cube
+position	0.0	0.0	2.5
+size		0.999
+end
+end
+end
+
+#CUBE 4
+
+primitive
+material_name	cube4
+
+geometry
+scale		1.0	1.0	1.0
+rotation	0.0	0.0	120.0
+translation	0.0	0.0	0.0
+
+cube
+position	0.0	0.0	3.5
+size		0.999
+end
+end
+end
+
+#SPHERE AU SOMMET
+
+primitive
+material_name	sphere
+
+geometry
+scale		1.0	1.0	1.0
+rotation	0.0	0.0	120.0
+translation	0.0	0.0	0.0
+
+sphere
+position	0.0	0.0	4.5
+ray		0.999
+end
+end
+end
+
+#-----------
+#MATÉRIEL
+#-----------
+
+material
+name	cube1
+color	0.4	0.6	0.9
+ka	0.1
+kd	0.6
+ks	0.8
+kr	0.5
+kt	0.0
+end	#end material
+
+material
+name	cube2
+color	0.7	0.7	0.5
+ka	0.1
+kd	0.6
+ks	0.8
+kr	0.5
+kt	0.0
+end	#end material
+
+material
+name	cube3
+color	0.9	0.9	0.2
+ka	0.1
+kd	0.6
+ks	0.8
+kr	0.5
+kt	0.0
+end	#end material
+
+material
+name	cube4
+color	0.1	0.1	0.9
+ka	0.1
+kd	0.6
+ks	0.8
+kr	0.5
+kt	0.0
+end	#end material
+
+material
+name	sphere
+color	1.0	1.0	1.0
+ka	0.05
+kd	0.1
+ks	0.3
+kr	0.0
+kt	0.9
+n	1.5
+end	#end material

@@ -1,0 +1,151 @@
+#Pyramide de base 9-4-1 dans le plan xy dont l'axe verticale est en z
+#La pyramide est centrée à l'origine et sa base en z = 0
+
+#Auteur : Simon Vézina (2015-12-03)
+
+
+#CUBE DU CENTRE
+
+primitive
+material_name	cube1
+cube
+position	0.0	0.0	0.5
+size		0.95	
+end
+end
+
+
+#CUBES DE L'étage 9
+
+primitive
+material_name	cube1
+cube
+position	-1.0	1.0	0.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube2
+cube
+position	0.0	1.0	0.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube1
+cube
+position	1.0	1.0	0.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube2
+cube
+position	-1.0	0.0	0.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube2
+cube
+position	1.0	0.0	0.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube1
+cube
+position	-1.0	-1.0	0.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube2
+cube
+position	0.0	-1.0	0.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube1
+cube
+position	1.0	-1.0	0.5
+size		0.95	
+end
+end
+
+#CUBES DE L'étage 4
+
+primitive
+material_name	cube1
+cube
+position	-0.5	0.5	1.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube1
+cube
+position	0.5	0.5	1.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube1
+cube
+position	-0.5	-0.5	1.5
+size		0.95	
+end
+end
+
+primitive
+material_name	cube1
+cube
+position	0.5	-0.5	1.5
+size		0.95	
+end
+end
+
+#CUBES DE L'étage 1
+
+primitive
+material_name	cube2
+cube
+position	0.0	0.0	2.5
+size		0.95	
+end
+end
+
+
+#-----------
+#MATÉRIEL
+#-----------
+
+material
+name	cube1
+color	0.9	0.3	0.3
+ka	0.1
+kd	0.6
+ks	0.8
+kr	0.5
+kt	0.0
+end	#end material
+
+material
+name	cube2
+color	0.3	0.9	0.3
+ka	0.1
+kd	0.6
+ks	0.8
+kr	0.5
+kt	0.0
+end	#end material

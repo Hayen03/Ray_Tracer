@@ -1,0 +1,82 @@
+camera
+position			[10.0, 10.0, 8.0]
+look_at			[0.0, 0.0, 0.0]
+up				[0.0, 0.1, 0.0]
+angle				60.0 degrees
+near_clipping_plane	0.1
+far_clipping_plane	1000.0
+end
+
+viewport
+width				500 pixels
+height			500 pixels
+image_file_name		teapot_multiple
+end
+
+raytracer
+task				1
+sampling			1
+recursive_level		1
+specular_reflexion	BLINN
+pixel_coordinate	top_left
+space				voxel
+end
+
+model	
+file			teapot.obj
+end
+
+model	
+file			teapot.obj
+translation	0.0	0.0	5.0
+scale			1.0	1.0	1.0
+rotation		0.0	0.0	0.0
+end
+
+model	
+file			teapot.obj
+translation	5.0	0.0	0.0
+scale			0.5	0.5	0.5
+rotation		0.0	90.0	0.0
+end
+
+model	
+file			teapot.obj
+translation	-5.0	5.0	0.0
+scale			0.5	1.0	0.5
+rotation		180.0	0.0	0.0
+end
+
+model	
+file			teapot.obj
+translation	0.0	0.0	-8.0
+scale			1.5	1.5	1.5
+rotation		90.0	90.0	90.0
+end
+
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_ambiante
+color 	1.0	1.0	1.0
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_ponctuelle
+color 			1.0	1.0	1.0
+position 			0.0	5.0	0.0
+quadratic_attenuator	0.05
+end
+
+**********************************
+**	Lumière blanche		**
+**********************************
+lumiere_directionnelle
+color			0.5	0.5	0.5
+orientation   	-1.0	-1.0	-1.0
+end
+
+
