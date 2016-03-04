@@ -9,6 +9,7 @@ import java.io.IOException;
 import sim.exception.SRuntimeException;
 import sim.exception.SConstructorException;
 import sim.graphics.SPrimitive;
+import sim.math.SMath;
 import sim.math.SVector3d;
 import sim.math.SVectorUV;
 import sim.util.SBufferedReader;
@@ -148,7 +149,13 @@ public class SSphereGeometry extends SAbstractGeometry {
 		if(ray.asIntersected())
 			throw new SRuntimeException("Erreur SSphereGeometry 004 : Le rayon a déjà intersecté une autre géométrie.");
 	
+		double[] temps = SGeometricIntersection.sphereIntersection(ray, position, R);
+		for (double t : temps)
+			if (t > SMath.EPSILON)
+				return ray.intersection(this, evaluateIntersectionNormal(ray, t), t, isInsideIntersection(ray, t));
 		return ray;
+		//TODO s'assurer que les temps dans t sont plus grand que 0;
+		
 	}
 
 	@Override

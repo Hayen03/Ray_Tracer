@@ -54,7 +54,10 @@ public class SGeometricIntersection {
    */
   public static double[] sphereIntersection(SRay ray, SVector3d r_sphere, double R)
   {
-    throw new SNoImplementationException("Erreur SGeometricIntersection : La méthode n'a pas été implémentée.");
+//    throw new SNoImplementationException("Erreur SGeometricIntersection : La méthode n'a pas été implémentée.");
+	  
+	  SVector3d diff = ray.getOrigin().substract(r_sphere);
+	  return SMath.quadricRealRoot(ray.getDirection().dot(ray.getDirection()), diff.multiply(2).dot(ray.getDirection()), diff.dot(diff) - R*R);
   }
 
   /**
