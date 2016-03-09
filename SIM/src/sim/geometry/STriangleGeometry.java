@@ -11,6 +11,7 @@ import sim.exception.SNoImplementationException;
 import sim.exception.SRuntimeException;
 import sim.graphics.SPrimitive;
 import sim.math.SImpossibleNormalizationException;
+import sim.math.SMath;
 import sim.math.SVector3d;
 import sim.math.SVectorUV;
 import sim.util.SBufferedReader;
@@ -83,12 +84,12 @@ public class STriangleGeometry extends SAbstractPlanarGeometry {
    * La variable <b>normal</b> correspond à la normale à la surface du triangle déterminée par la règle de la main droite dans l'ordre P0, P1 et P2 des points du triangle.
    */
 	protected SVector3d normal; 
-  
+	
 	//---------------------------
 	// PARAMÈTRES DE PRÉCALCUL //
 	//---------------------------
 	
-	
+	private SVector3d u01, u02, u12;
 	
 	//-----------------
 	// CONSTRUCTEURS //
@@ -213,7 +214,29 @@ public class STriangleGeometry extends SAbstractPlanarGeometry {
 		//S'assurer que le rayon n'a rien intersecté auparavant
 		if(ray.asIntersected())
 			throw new SRuntimeException("Erreur STriangleGeometry 003 : Le rayon a déjà intersecté une autre géométrie.");
-				
+		
+		double[] ints = SGeometricIntersection.planeIntersection(ray, P0, normal);
+		if (ints.length == 0 || ints[0] < SMath.EPSILON)
+			return ray;
+/*
+ 		double ti = normal.dot(P0.substract(ray.getOrigin()));
+		SVector3d ri = ray.getOrigin().add(ray.getDirection().multiply(ti));
+ 		
+		SVector3d s1 = P1.substract(P0);
+		SVector3d s2 = P2.substract(P0);
+		SVector3d w = ri.substract(P0);
+		
+		double 	ws1 = w.dot(s1),
+				ws2 = w.dot(s2),
+				s2s2 = s2.dot(s2),
+				s1s1 = s1.dot(s1),
+				s1s2 = s1.dot(s2),
+				denominateur = s1s1*s2s2 - s1s2*s1s2;
+		
+		double 	t1 = (ws1*s2s2 - ws2*s1s2)/denominateur,
+				t2 = (ws2*s1s1 - ws1*s1s2)/denominateur;
+*/
+		
 		return ray;
 	}
 
@@ -286,6 +309,7 @@ public class STriangleGeometry extends SAbstractPlanarGeometry {
     // Évaluer la normale à la surface
     try{
       normal = evaluateNormal(P0, P1, P2);
+      computeInteriorVector();
     }catch(SImpossibleNormalizationException e){
       throw new SInitializationException("Erreur STriangleGeometry XXX : Les trois points du triangle ne permettent pas de construire un vecteur normale à la surface pouvant être normalisée." + SStringUtil.END_LINE_CARACTER + "\t" + e.getMessage(), e);
     }
@@ -373,6 +397,16 @@ public class STriangleGeometry extends SAbstractPlanarGeometry {
     String[] other_parameters = super.getReadableParameterName();
     
     return SStringUtil.merge(other_parameters, KEYWORD_PARAMETER);
+  }
+  
+  private void computeInteriorVector(){
+	  SVector3d 	s01 = P1.substract(P0),
+			  		s02 = P2.substract(P0),
+	  				s12 = P2.substract(P1);
+	  u01 = normal.cross(s01).normalize();
+	  u02 = normal.cross(s02).normalize();
+	  u12 = normal.cross(s12).normalize();
+	  
   }
   
 }//fin de la classe STriangle

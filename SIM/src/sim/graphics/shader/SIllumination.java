@@ -100,7 +100,10 @@ public class SIllumination {
 	 */
 	public static SColor blinnSpecularReflexion(SColor Ls, SColor Ss, SVector3d N, SVector3d v, SVector3d d, double n)
 	{
-	  return NO_ILLUMINATION;
+		// Lspe = Ls*Ss*(NdotH)^n
+		SVector3d E = v.multiply(-1), L = d.multiply(-1);
+		SVector3d H = E.add(L).normalize();
+		return Ls.multiply(Ss).multiply(Math.pow(N.dot(H), n));
 	}
 	
 	/**

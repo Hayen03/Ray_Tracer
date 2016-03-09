@@ -37,7 +37,7 @@ end
 end
 
 primitive
-material_name	sphere_blue
+material_name	sphere_red
 sphere
 position	0.0		0.0		2.0
 ray			1.0
@@ -45,9 +45,9 @@ end
 end
 
 primitive
-material_name	sphere_red
+material_name	sphere_blue
 sphere
-position	0.0		3.0		2.0
+position	0.0		0.0		2.0
 ray			1.0
 end
 end

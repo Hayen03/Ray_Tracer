@@ -26,7 +26,8 @@ public class SOptics {
 	 */
 	public static SVector3d reflexion(SVector3d v, SVector3d N)
 	{
-		throw new SNoImplementationException("Cette méthode doit être implémentée dans le cadre d'un laboratoire.");
+		return v.add(N.multiply(v.multiply(-1).dot(N)*2));
+//		throw new SNoImplementationException("Cette méthode doit être implémentée dans le cadre d'un laboratoire.");
 	}
 	
 	/**
@@ -42,7 +43,12 @@ public class SOptics {
 	 */
 	public static SVector3d refraction(SVector3d v, SVector3d N, double n1, double n2)throws SRuntimeException
 	{
-	  throw new SNoImplementationException("Cette méthode doit être implémentée dans le cadre d'un laboratoire.");
+		SVector3d E = v.multiply(-1);
+		double n = n1/n2;
+		double dot = E.dot(N);
+		return v.multiply(n).add(N.multiply(n*dot - Math.sqrt(1-n*n*(1-dot*dot))));
+		
+//	  throw new SNoImplementationException("Cette méthode doit être implémentée dans le cadre d'un laboratoire.");
 	}
 	
 	/**
@@ -56,7 +62,9 @@ public class SOptics {
 	 */
 	public static boolean isTotalInternalReflection(SVector3d v, SVector3d N, double n1, double n2)
 	{
-	  throw new SNoImplementationException("Cette méthode doit être implémentée dans le cadre d'un laboratoire.");
+		double dot = v.dot(N), n = n2/n1;
+		return dot*dot + n*n <= 1;
+		//throw new SNoImplementationException("Cette méthode doit être implémentée dans le cadre d'un laboratoire.");
 	}
 
 }//fin classe SOptics
